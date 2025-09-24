@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "vercel-build": "nuxt build",
-    "netlify-build": "NITRO_PRESET=netlify nuxt build"
+    "netlify-build": "nuxt generate"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
