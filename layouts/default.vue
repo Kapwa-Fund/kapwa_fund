@@ -14,16 +14,35 @@
             <a href="#solution" class="text-gray-700 hover:text-blue-600 transition-colors">Kapwa Solution</a>
             <a href="#how-it-works" class="text-gray-700 hover:text-blue-600 transition-colors">How It Works</a>
             <a href="#vision" class="text-gray-700 hover:text-blue-600 transition-colors">Vision</a>
+            <NuxtLink to="/blog" class="text-gray-700 hover:text-blue-600 transition-colors">Blog</NuxtLink>
           </div>
           <div class="flex items-center space-x-4">
             <button class="btn-primary">
               Get Started
             </button>
-            <button class="md:hidden">
+            <button
+              class="md:hidden"
+              aria-label="Toggle navigation menu"
+              :aria-expanded="isMobileMenuOpen ? 'true' : 'false'"
+              @click="isMobileMenuOpen = !isMobileMenuOpen"
+            >
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
+          </div>
+        </div>
+        <!-- Mobile menu -->
+        <div
+          class="md:hidden"
+          v-show="isMobileMenuOpen"
+        >
+          <div class="px-4 pb-4 space-y-2">
+            <a href="#problem" class="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100">The Problem</a>
+            <a href="#solution" class="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Kapwa Solution</a>
+            <a href="#how-it-works" class="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100">How It Works</a>
+            <a href="#vision" class="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Vision</a>
+            <NuxtLink to="/blog" class="block px-3 py-2 rounded-lg text-gray-700 hover:bg-gray-100">Blog</NuxtLink>
           </div>
         </div>
       </nav>
@@ -67,13 +86,36 @@
           </div>
         </div>
         <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-          <p>&copy; 2024 Kapwa Fund. All rights reserved.</p>
+          <p>&copy; 2025 Kapwa Fund. All rights reserved.</p>
         </div>
       </div>
     </footer>
   </div>
 </template>
 
-<script setup>
-// Header scroll effect could be added here
+<script setup lang="ts">
+import { ref, onMounted, onUnmounted } from 'vue'
+
+const isMobileMenuOpen = ref(false)
+
+// Close menu on route change
+const router = useRouter()
+router.afterEach(() => {
+  isMobileMenuOpen.value = false
+})
+
+// Close on escape key
+const onKeydown = (e: KeyboardEvent) => {
+  if (e.key === 'Escape') {
+    isMobileMenuOpen.value = false
+  }
+}
+
+onMounted(() => {
+  window.addEventListener('keydown', onKeydown)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', onKeydown)
+})
 </script>

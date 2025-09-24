@@ -24,3 +24,6 @@ node_modules
 
 # Vercel
 .vercel
+
+# Local Netlify folder
+.netlify

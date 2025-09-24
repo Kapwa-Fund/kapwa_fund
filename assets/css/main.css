@@ -28,4 +28,36 @@
   .container-max {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+  
+  .prose {
+    @apply text-gray-700 leading-relaxed;
+  }
+  
+  .prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+    @apply text-gray-900 font-bold;
+  }
+  
+  .prose h2 {
+    @apply text-3xl mt-12 mb-6;
+  }
+  
+  .prose h3 {
+    @apply text-2xl mt-8 mb-4;
+  }
+  
+  .prose p {
+    @apply mb-6;
+  }
+  
+  .prose ul, .prose ol {
+    @apply mb-6;
+  }
+  
+  .prose li {
+    @apply mb-2;
+  }
+  
+  .prose strong {
+    @apply font-semibold text-gray-900;
+  }
 }
